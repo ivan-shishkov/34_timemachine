@@ -39,6 +39,12 @@ class Timer {
     this.isRunning = false;
     this.timestampOnStart = null;
     this.timeoutInSecs = this.initialTimeoutInSecs;
+
+    if (timeoutInSecs) {
+      this.timeoutInSecs = timeoutInSecs;
+    } else {
+      this.timeoutInSecs = this.initialTimeoutInSecs;
+    }
   }
 
   calculateSecsLeft() {
