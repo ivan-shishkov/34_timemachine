@@ -19,15 +19,17 @@ class Timer {
   }
 
   start() {
-    if (this.isRunning)
+    if (this.isRunning) {
       return;
+    }
     this.timestampOnStart = this.getTimestampInSecs();
     this.isRunning = true;
   }
 
   stop() {
-    if (!this.isRunning)
+    if (!this.isRunning) {
       return;
+    }
     this.timeoutInSecs = this.calculateSecsLeft();
     this.timestampOnStart = null;
     this.isRunning = false;
@@ -40,8 +42,9 @@ class Timer {
   }
 
   calculateSecsLeft() {
-    if (!this.isRunning)
+    if (!this.isRunning) {
       return this.timeoutInSecs;
+    }
     var currentTimestamp = this.getTimestampInSecs();
     var secsGone = currentTimestamp - this.timestampOnStart;
     return Math.max(this.timeoutInSecs - secsGone, 0);
@@ -56,9 +59,9 @@ class TimerWidget {
   }
 
   mount(rootTag) {
-    if (this.timerContainer)
+    if (this.timerContainer) {
       this.unmount();
-
+    }
     // adds HTML tag to current page
     this.timerContainer = document.createElement('div');
 
@@ -80,8 +83,9 @@ class TimerWidget {
   }
 
   unmount() {
-    if (!this.timerContainer)
+    if (!this.timerContainer) {
       return;
+    }
     this.timerContainer.remove();
     this.timerContainer = this.minutesElement = this.secondsElement = null;
   }
