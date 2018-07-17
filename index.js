@@ -39,7 +39,6 @@ class Timer {
   reset(timeoutInSecs) {
     this.isRunning = false;
     this.timestampOnStart = null;
-    this.timeoutInSecs = this.initialTimeoutInSecs;
 
     if (timeoutInSecs) {
       this.timeoutInSecs = timeoutInSecs;
