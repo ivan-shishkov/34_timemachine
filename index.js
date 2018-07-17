@@ -1,4 +1,5 @@
-var TIMEOUT_IN_SECS = 3 * 60;
+var TIMEOUT_BEFORE_ALERTS_IN_SECS = 3 * 60;
+var TIMEOUT_BETWEEN_ALERTS_IN_SECS = 30;
 var TEMPLATE = '<h1><span class="js-timer-minutes">00</span>:<span class="js-timer-seconds">00</span></h1>';
 
 function padZero(number) {
@@ -100,7 +101,7 @@ class TimerWidget {
 
 function main() {
 
-  var timer = new Timer(TIMEOUT_IN_SECS);
+  var timer = new Timer(TIMEOUT_BEFORE_ALERTS_IN_SECS);
   var timerWidget = new TimerWidget();
   var intervalId = null;
 
