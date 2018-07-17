@@ -8,8 +8,8 @@ function padZero(number) {
 class Timer {
   // IE does not support new style classes yet
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
-  constructor(timeout_in_secs) {
-    this.initial_timeout_in_secs = timeout_in_secs;
+  constructor(timeoutInSecs) {
+    this.initialTimeoutInSecs = timeoutInSecs;
     this.reset();
   }
 
@@ -28,23 +28,23 @@ class Timer {
   stop() {
     if (!this.isRunning)
       return;
-    this.timeout_in_secs = this.calculateSecsLeft();
+    this.timeoutInSecs = this.calculateSecsLeft();
     this.timestampOnStart = null;
     this.isRunning = false;
   }
 
-  reset(timeout_in_secs) {
+  reset(timeoutInSecs) {
     this.isRunning = false;
     this.timestampOnStart = null;
-    this.timeout_in_secs = this.initial_timeout_in_secs;
+    this.timeoutInSecs = this.initialTimeoutInSecs;
   }
 
   calculateSecsLeft() {
     if (!this.isRunning)
-      return this.timeout_in_secs;
+      return this.timeoutInSecs;
     var currentTimestamp = this.getTimestampInSecs();
     var secsGone = currentTimestamp - this.timestampOnStart;
-    return Math.max(this.timeout_in_secs - secsGone, 0);
+    return Math.max(this.timeoutInSecs - secsGone, 0);
   }
 }
 
@@ -52,7 +52,7 @@ class TimerWidget {
   // IE does not support new style classes yet
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
   construct() {
-    this.timerContainer = this.minutes_element = this.seconds_element = null;
+    this.timerContainer = this.minutesElement = this.secondsElement = null;
   }
 
   mount(rootTag) {
@@ -67,23 +67,23 @@ class TimerWidget {
 
     rootTag.insertBefore(this.timerContainer, rootTag.firstChild);
 
-    this.minutes_element = this.timerContainer.getElementsByClassName('js-timer-minutes')[0];
-    this.seconds_element = this.timerContainer.getElementsByClassName('js-timer-seconds')[0];
+    this.minutesElement = this.timerContainer.getElementsByClassName('js-timer-minutes')[0];
+    this.secondsElement = this.timerContainer.getElementsByClassName('js-timer-seconds')[0];
   }
 
   update(secsLeft) {
     var minutes = Math.floor(secsLeft / 60);
     var seconds = secsLeft - minutes * 60;
 
-    this.minutes_element.innerHTML = padZero(minutes);
-    this.seconds_element.innerHTML = padZero(seconds);
+    this.minutesElement.innerHTML = padZero(minutes);
+    this.secondsElement.innerHTML = padZero(seconds);
   }
 
   unmount() {
     if (!this.timerContainer)
       return;
     this.timerContainer.remove();
-    this.timerContainer = this.minutes_element = this.seconds_element = null;
+    this.timerContainer = this.minutesElement = this.secondsElement = null;
   }
 }
 
@@ -91,14 +91,14 @@ class TimerWidget {
 function main() {
 
   var timer = new Timer(TIMEOUT_IN_SECS);
-  var timerWiget = new TimerWidget();
+  var timerWidget = new TimerWidget();
   var intervalId = null;
 
-  timerWiget.mount(document.body);
+  timerWidget.mount(document.body);
 
   function handleIntervalTick() {
     var secsLeft = timer.calculateSecsLeft();
-    timerWiget.update(secsLeft);
+    timerWidget.update(secsLeft);
   }
 
   function handleVisibilityChange() {
