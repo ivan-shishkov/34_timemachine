@@ -1,6 +1,11 @@
 var TIMEOUT_BEFORE_ALERTS_IN_SECS = 3 * 60;
 var TIMEOUT_BETWEEN_ALERTS_IN_SECS = 30;
-var TEMPLATE = '<div><span class="js-timer-minutes">00</span>:<span class="js-timer-seconds">00</span></div>';
+
+var TEMPLATE = '<span class="js-timer-minutes">00</span>:<span class="js-timer-seconds">00</span>';
+
+var TIMER_STYLES = 'position: fixed; left: 0; top: 0; height: 50px; width: 110px; padding: 5px;' +
+  ' font-family: "Helvettica", "Arial", sans-serif; font-size: 40px; text-align: center; color: #626567;' +
+  ' font-weight: bold; background-color: transparent; border: 3px solid #979a9a; border-radius: 5px;';
 
 function padZero(number) {
   return ("00" + String(number)).slice(-2);
@@ -71,7 +76,7 @@ class TimerWidget {
     // adds HTML tag to current page
     this.timerContainer = document.createElement('div');
 
-    this.timerContainer.setAttribute("style", "height: 100px;");
+    this.timerContainer.setAttribute("style", TIMER_STYLES);
     this.timerContainer.innerHTML = TEMPLATE;
 
     rootTag.insertBefore(this.timerContainer, rootTag.firstChild);
