@@ -116,7 +116,6 @@ class TimerWidget {
 
 
 function main() {
-
   var timer = new Timer(TIMEOUT_BEFORE_ALERTS_IN_SECS);
   var timerWidget = new TimerWidget();
   var intervalId = null;
