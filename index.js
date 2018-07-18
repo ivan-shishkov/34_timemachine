@@ -3,7 +3,7 @@ var TIMEOUT_BETWEEN_ALERTS_IN_SECS = 30;
 
 var TEMPLATE = '<span class="js-timer-minutes">00</span>:<span class="js-timer-seconds">00</span>';
 
-var TIMER_STYLES = 'position: fixed; left: 0; top: 0; height: 50px; width: 110px; padding: 5px;' +
+var TIMER_STYLES = 'position: fixed; left: 0; top: 0; z-index: 100; height: 50px; width: 110px; padding: 5px;' +
   ' font-family: "Helvettica", "Arial", sans-serif; font-size: 40px; text-align: center; color: #626567;' +
   ' font-weight: bold; background-color: transparent; border: 3px solid #979a9a; border-radius: 5px;';
 
