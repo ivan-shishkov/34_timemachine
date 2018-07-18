@@ -130,6 +130,13 @@ function main() {
   function handleIntervalTick() {
     var secsLeft = timer.calculateSecsLeft();
     timerWidget.update(secsLeft);
+
+    if (secsLeft === 0) {
+      window.alert( getRandomAlertMessage(ALERT_MESSAGES) );
+
+      timer.reset(TIMEOUT_BETWEEN_ALERTS_IN_SECS);
+      timer.start();
+    }
   }
 
   function handleVisibilityChange() {
