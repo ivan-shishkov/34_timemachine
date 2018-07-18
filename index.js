@@ -123,6 +123,10 @@ function main() {
 
   timerWidget.mount(document.body);
 
+  function getRandomAlertMessage(alertMessages) {
+    return alertMessages[Math.floor(Math.random() * alertMessages.length)];
+  }
+
   function handleIntervalTick() {
     var secsLeft = timer.calculateSecsLeft();
     timerWidget.update(secsLeft);
