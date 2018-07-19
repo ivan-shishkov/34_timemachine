@@ -158,5 +158,5 @@ if (document.readyState === "complete" || document.readyState === "loaded") {
   main();
 } else {
   // initialize timer when page ready for presentation
-  window.addEventListener('DOMContentLoaded', main);
+  window.addEventListener('load', main);
 }
